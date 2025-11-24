@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,6 +16,13 @@ const Contact = () => {
   const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "YOUR_SERVICE_ID";
   const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
   const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
+
+  // Initialize EmailJS
+  useEffect(() => {
+    if (EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY") {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+    }
+  }, [EMAILJS_PUBLIC_KEY]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -59,11 +66,12 @@ const Contact = () => {
         description: "Thank you for reaching out. I'll get back to you soon.",
       });
       form.reset();
-    } catch (error) {
+    } catch (error: any) {
       console.error("EmailJS error:", error);
+      const errorMessage = error?.text || error?.message || "Unknown error occurred";
       toast({
         title: "Error sending message",
-        description: "There was a problem sending your message. Please try again or contact me directly at sidm@umd.edu",
+        description: `Failed to send: ${errorMessage}. Please try again or contact me directly at sidm@umd.edu`,
         variant: "destructive",
       });
     } finally {
