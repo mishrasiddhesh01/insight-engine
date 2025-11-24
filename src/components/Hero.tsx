@@ -19,25 +19,34 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-20 text-center">
         <div className="animate-fade-in-up">
-          {/* Profile Image Placeholder */}
+          {/* Profile Image */}
           <div className="mb-8 flex justify-center">
-            <div className="w-32 h-32 rounded-full bg-gradient-primary flex items-center justify-center text-4xl font-bold text-white shadow-glow animate-glow-pulse">
-              SM
+            <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-primary/20 shadow-glow">
+              <img
+                src="https://i.postimg.cc/nr6NNBLy/1000096182.jpg"
+                alt="Profile"
+                className="w-full h-full object-cover scale-80"
+                style={{ objectPosition: 'center 15%' }}
+              />
             </div>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="gradient-text">Data Analyst</span> &{" "}
-            <span className="gradient-text">Analytics Engineer</span>
+          <h2 className="text-base md:text-lg font-medium mb-4 text-muted-foreground">
+            Hello, I'm Siddhesh
+          </h2>
+
+          <h1 className="text-[1.92rem] md:text-[2.88rem] font-bold mb-6 leading-tight">
+            <span className="gradient-text">Data Strategy</span> &{" "}
+            <span className="gradient-text">Insights Professional</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto">
-            Transforming Complex Data Into Clear, Actionable Insights
+            Driving smarter decisions by connecting strategy, systems, and analytics.
           </p>
 
           <p className="text-base md:text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Specializing in institutional research, healthcare analytics, predictive
-            modeling, and data engineering workflows
+            Specializing in Institutional Research, Healthcare Analytics, Predictive
+            Modeling, and Data Engineering Workflows
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

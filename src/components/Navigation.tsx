@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -22,6 +22,11 @@ const Navigation = () => {
       document.documentElement.classList.remove("dark");
     }
   }, [isDark]);
+
+  useEffect(() => {
+    // Apply dark mode on initial load
+    document.documentElement.classList.add("dark");
+  }, []);
 
   const navItems = [
     { name: "Home", href: "#home" },

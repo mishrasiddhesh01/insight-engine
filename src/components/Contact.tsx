@@ -1,20 +1,74 @@
+import { useState } from "react";
 import { Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  // EmailJS configuration - Replace these with your actual EmailJS credentials
+  // Get these from https://www.emailjs.com/
+  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "YOUR_SERVICE_ID";
+  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
+  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    (e.target as HTMLFormElement).reset();
+    setIsLoading(true);
+
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const subject = formData.get("subject") as string;
+    const message = formData.get("message") as string;
+
+    // EmailJS template parameters
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      subject: subject,
+      message: message,
+      to_email: "sidm@umd.edu", // Your email address
+    };
+
+    try {
+      // Check if EmailJS is configured
+      if (
+        EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID" ||
+        EMAILJS_TEMPLATE_ID === "YOUR_TEMPLATE_ID" ||
+        EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY"
+      ) {
+        throw new Error("EmailJS is not configured. Please set up your EmailJS credentials.");
+      }
+
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      toast({
+        title: "Message sent!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+      form.reset();
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      toast({
+        title: "Error sending message",
+        description: "There was a problem sending your message. Please try again or contact me directly at sidm@umd.edu",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -69,6 +123,7 @@ const Contact = () => {
                 </label>
                 <Input
                   id="name"
+                  name="name"
                   placeholder="Your name"
                   required
                   className="border-border"
@@ -80,6 +135,7 @@ const Contact = () => {
                 </label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="your.email@example.com"
                   required
@@ -94,6 +150,7 @@ const Contact = () => {
               </label>
               <Input
                 id="subject"
+                name="subject"
                 placeholder="What's this about?"
                 required
                 className="border-border"
@@ -106,6 +163,7 @@ const Contact = () => {
               </label>
               <Textarea
                 id="message"
+                name="message"
                 placeholder="Your message..."
                 rows={6}
                 required
@@ -116,9 +174,10 @@ const Contact = () => {
             <Button
               type="submit"
               size="lg"
-              className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
+              disabled={isLoading}
+              className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300 disabled:opacity-50"
             >
-              Send Message
+              {isLoading ? "Sending..." : "Send Message"}
             </Button>
           </form>
         </Card>

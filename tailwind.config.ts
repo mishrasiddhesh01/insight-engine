@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Libre Baskerville', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",

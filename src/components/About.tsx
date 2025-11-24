@@ -12,7 +12,7 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           <div className="space-y-6 animate-fade-in">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm a <span className="text-foreground font-semibold">data analyst and analytics engineer</span> with a passion for turning complex datasets into clear, actionable insights. With a background spanning institutional research, healthcare analytics, and consulting, I've honed my ability to bridge the gap between technical analysis and strategic storytelling.
+              I'm a <span className="text-foreground font-semibold">data and analytics professional</span> with <span className="text-foreground font-semibold">5+ years</span> of experience and passion for turning complex datasets into clear, actionable insights. With a background spanning institutional research, healthcare analytics, and consulting, I've honed my ability to bridge the gap between technical analysis and strategic storytelling.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               I hold a <span className="text-foreground font-semibold">Master's in Information Systems from the University of Maryland</span>, where I focused on predictive analytics, statistical modeling, and data visualization. My work has ranged from building decision-ready insights for higher education institutions to designing predictive models that improve patient outcomes in healthcare settings.

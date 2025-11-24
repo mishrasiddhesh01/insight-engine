@@ -8,7 +8,7 @@ const skillCategories = [
   },
   {
     title: "BI & Visualization",
-    skills: ["Tableau", "Power BI", "QuickSight"],
+    skills: ["Tableau", "Power BI", "QuickSight", "IBM Cognos"],
   },
   {
     title: "Data Warehouses",
@@ -48,6 +48,16 @@ const skillCategories = [
     title: "Collaboration",
     skills: ["GitHub", "Agile/Scrum", "Jira", "Confluence"],
   },
+  {
+    title: "Higher-Ed Domain",
+    skills: [
+      "SIS (Banner, PeopleSoft)",
+      "Retention/Persistence/Graduation",
+      "IPEDS",
+      "Accreditation",
+      "FERPA",
+    ],
+  },
 ];
 
 const Skills = () => {
@@ -83,31 +93,85 @@ const Skills = () => {
           ))}
         </div>
 
-        <Card className="p-6 bg-primary/5 border-primary/20">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary/10 rounded-lg">
-              <svg
-                className="h-6 w-6 text-primary"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <div>
-              <h3 className="font-bold">Certification</h3>
-              <p className="text-sm text-muted-foreground">
-                Power BI Data Analyst Associate (PL-300)
-              </p>
-            </div>
+        <div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
+            <span className="text-white">Certifications</span>
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card className="p-6 bg-primary/5 border-primary/20">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <svg
+                    className="h-6 w-6 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">
+                    Microsoft Power BI Data Analyst Associate (PL-300)
+                  </p>
+                </div>
+              </div>
+            </Card>
+            <Card className="p-6 bg-primary/5 border-primary/20">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <svg
+                    className="h-6 w-6 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">
+                    Databricks Certified Data Analyst Associate
+                  </p>
+                </div>
+              </div>
+            </Card>
+            <Card className="p-6 bg-primary/5 border-primary/20">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <svg
+                    className="h-6 w-6 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">
+                    Associate Data Analyst in SQL (DataCamp)
+                  </p>
+                </div>
+              </div>
+            </Card>
           </div>
-        </Card>
+        </div>
       </div>
     </section>
   );

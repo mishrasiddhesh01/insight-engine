@@ -4,10 +4,10 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
         <div className="text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Siddhesh Mishra. All rights reserved.
+            © {new Date().getFullYear()} Siddhesh Mishra. 
           </p>
-          <p className="text-xs text-muted-foreground mt-2">
-            Built with React, TypeScript, and Tailwind CSS
+          <p className="text-sm text-muted-foreground mt-2">
+            Made with love, logic, and mild existential dread.
           </p>
         </div>
       </div>
